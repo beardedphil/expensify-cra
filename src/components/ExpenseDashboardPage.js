@@ -3,6 +3,8 @@ import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
 import ExpensesSummary from './ExpensesSummary';
 
+console.log('aldkf');
+
 const ExpenseDashboardPage = () => (
   <div>
     <ExpensesSummary />
