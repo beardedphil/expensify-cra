@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
+import { startSetExpenses } from './actions/expenses';
 import * as serviceWorker from './serviceWorker';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -12,12 +13,21 @@ const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-      <Provider store={store}>
-          <AppRouter />
-      </Provider>
+      <p>Loading...</p>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+store.dispatch(startSetExpenses()).then(() => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <AppRouter />
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
